@@ -35,3 +35,19 @@ GET: /negociacoes/anterior [localhost:3000/negociacoes/anterior](http://localhos
 GET: /negociacoes/retrasada [localhost:3000/negociacoes/retrasada](http://localhost:3000/negociacoes/retrasada)
 
 POST: /negociacoes [localhost:3000/negociacoes](http://localhost:3000/negociacoes)
+
+## Webpack
+
+To transpile ES2015 Modules with Babel and bundle with Webpack, run:
+
+**Build**
+
+```
+npm run build
+```
+
+**Watch**
+
+```
+npm run watch
+```
