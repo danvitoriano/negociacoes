@@ -35,3 +35,17 @@ GET: /negociacoes/anterior [localhost:3000/negociacoes/anterior](http://localhos
 GET: /negociacoes/retrasada [localhost:3000/negociacoes/retrasada](http://localhost:3000/negociacoes/retrasada)
 
 POST: /negociacoes [localhost:3000/negociacoes](http://localhost:3000/negociacoes)
+
+### IndexedDB
+
+To test persistence at IndexedDB browser local storage database, access:
+
+[http://localhost:3000/post.html](http://localhost:3000/post.html)
+
+At Developer Mode browser Console tab, type:
+
+```
+adiciona()
+```
+
+Check the Developer Mode browser Application tab, check the IndexedDB localhost to see persistence.
