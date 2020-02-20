@@ -26,8 +26,12 @@ Files at `/client` folder.
 Files at `/server` folder.
 It uses Express.JS as server side framework.
 
-API /negociacoes/semana [localhost:3000/negociacoes/semana](http://localhost:3000/negociacoes/semana)
+**API:**
 
-API /negociacoes/anterior [localhost:3000/negociacoes/anterior](http://localhost:3000/negociacoes/anterior)
+GET: /negociacoes/semana[localhost:3000/negociacoes/semana](http://localhost:3000/negociacoes/semana)
 
-API /negociacoes/retrasada [localhost:3000/negociacoes/retrasada](http://localhost:3000/negociacoes/retrasada)
+GET: /negociacoes/anterior [localhost:3000/negociacoes/anterior](http://localhost:3000/negociacoes/anterior)
+
+GET: /negociacoes/retrasada [localhost:3000/negociacoes/retrasada](http://localhost:3000/negociacoes/retrasada)
+
+POST: /negociacoes [localhost:3000/negociacoes](http://localhost:3000/negociacoes)
