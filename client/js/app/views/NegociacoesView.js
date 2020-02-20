@@ -1,11 +1,15 @@
-class NegociacoesView extends View {
-    
+import { View } from './View';
+import { DateHelper } from '../helpers/DateHelper';
+// import { currentInstance } from '../controllers/NegociacaoController';
+
+export class NegociacoesView extends View {
+
     constructor(elemento) {
         super(elemento);
     }
-    
+
     template(model) {
-        
+
         return `
         <table class="table table-hover table-bordered">
             <thead>
