@@ -2,6 +2,18 @@
 
 Object Oriented and Design Patterned JavaScript ES2015+ and Node.JS Stock Negotiations Project. It uses Express.JS as server side framework.
 
+## Open Source Project
+
+https://github.com/danvitoriano/negociacoes/projects/1
+
+## Issues
+
+https://github.com/danvitoriano/negociacoes/issues
+
+## Wiki
+
+https://github.com/danvitoriano/negociacoes/wiki
+
 ## Branches
 
 - master: Basic JS project form to add negotiations
