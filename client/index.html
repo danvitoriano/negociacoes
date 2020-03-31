@@ -5,13 +5,17 @@
     <title>Negociações</title>
     <link rel="stylesheet" href="css/bootstrap.css" />
     <link rel="stylesheet" href="css/bootstrap-theme.css" />
+
+    <!-- data-main attribute tells require.js to load
+             scripts/main.js after require.js loads. -->
+    <!-- <script data-main="scripts/main" src="js/app/require.js"></script> -->
   </head>
   <body class="container">
     <h1 class="text-center">Negociações</h1>
 
     <div id="mensagemView"></div>
 
-    <form class="form" onsubmit="negociacaoController.adiciona(event)">
+    <form class="form">
       <div class="form-group">
         <label for="data">Data</label>
         <input type="date" id="data" class="form-control" required autofocus />
@@ -47,10 +51,18 @@
     </form>
 
     <div class="text-center">
-      <button class="btn btn-primary text-center" type="button">
+      <button
+        id="importa-negociacoes-btn"
+        class="btn btn-primary text-center"
+        type="button"
+      >
         Importar Negociações
       </button>
-      <button class="btn btn-primary text-center" type="button">
+      <button
+        id="apaga-negociacoes-btn"
+        class="btn btn-primary text-center"
+        type="button"
+      >
         Apagar
       </button>
     </div>
@@ -58,17 +70,6 @@
     <br />
 
     <div id="negociacoesView"></div>
-
-    <script src="js/app/models/Negociacao.js"></script>
-    <script src="js/app/models/ListaNegociacoes.js"></script>
-    <script src="js/app/models/Mensagem.js"></script>
-    <script src="js/app/controllers/NegociacaoController.js"></script>
-    <script src="js/app/helpers/DateHelper.js"></script>
-    <script src="js/app/views/View.js"></script>
-    <script src="js/app/views/NegociacoesView.js"></script>
-    <script src="js/app/views/MensagemView.js"></script>
-    <script>
-      let negociacaoController = new NegociacaoController();
-    </script>
+    <script src="./build/_boot.bundle.js"></script>
   </body>
 </html>
