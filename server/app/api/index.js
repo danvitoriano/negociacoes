@@ -8,15 +8,15 @@ var dateRetrasada = new Date();
 dateRetrasada.setDate(dataAtual.getDate() - 14);
 
 var negociacoes = [
-      { data : dataAtual, quantidade : 1, valor : 150},
-      { data : dataAtual, quantidade : 2, valor : 250},
-      { data : dataAtual, quantidade : 3, valor : 350},
-      { data : dataAnterior, quantidade : 1, valor : 450},
-      { data : dataAnterior, quantidade : 2, valor : 550},
-      { data : dataAnterior, quantidade : 3, valor : 650},
-      { data : dateRetrasada, quantidade : 1, valor : 750},
-      { data : dateRetrasada, quantidade : 2, valor : 950},
-      { data : dateRetrasada, quantidade : 3, valor : 950}
+      { nome:"Bombril" , data : dataAtual, quantidade : 1, valor : 150},
+      { nome:"Fiap" ,data : dataAtual, quantidade : 2, valor : 250},
+      { nome:"Pagseguro" ,data : dataAtual, quantidade : 3, valor : 350},
+      { nome:"Samsung" ,data : dataAnterior, quantidade : 1, valor : 450},
+      { nome:"Petrobras" ,data : dataAnterior, quantidade : 2, valor : 550},
+      { nome:"Magazine Luiza" ,data : dataAnterior, quantidade : 3, valor : 650},
+      { nome:"Bar do Zé" ,data : dateRetrasada, quantidade : 1, valor : 750},
+      { nome:"Outback" ,data : dateRetrasada, quantidade : 2, valor : 950},
+      { nome:"Antartica" ,data : dateRetrasada, quantidade : 3, valor : 950}
     ];
 
 

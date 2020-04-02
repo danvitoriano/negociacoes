@@ -9,6 +9,7 @@ import { Negociacao } from '../models/Negociacao';
 export class NegociacaoController {
     constructor() {
         let $ = document.querySelector.bind(document);
+        this._inputNome = $("#nome");
         this._inputData = $("#data");
         this._inputQuantidade = $("#quantidade");
         this._inputValor = $("#valor");
@@ -35,6 +36,7 @@ export class NegociacaoController {
 
     _criaNegociacao() {
         return new Negociacao(
+            this._inputNome.value,
             DateHelper.textoParaData(this._inputData.value),
             this._inputQuantidade.value,
             this._inputValor.value
@@ -42,10 +44,11 @@ export class NegociacaoController {
     }
 
     _limpaFormulario() {
+        this._inputNome.value = "";
         this._inputData.value = "";
         this._inputQuantidade.value = 1;
         this._inputValor.value = 0.0;
-        this._inputData.focus();
+        this._inputNome.focus();
     }
 
     apaga() {

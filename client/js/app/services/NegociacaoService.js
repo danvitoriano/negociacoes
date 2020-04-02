@@ -15,6 +15,7 @@ export class NegociacaoService {
                         negociacoes.map(
                             objeto =>
                                 new Negociacao(
+                                    objeto.nome,
                                     new Date(objeto.data),
                                     objeto.quantidade,
                                     objeto.valor
@@ -38,6 +39,7 @@ export class NegociacaoService {
                         negociacoes.map(
                             objeto =>
                                 new Negociacao(
+                                    objeto.nome,
                                     new Date(objeto.data),
                                     objeto.quantidade,
                                     objeto.valor
@@ -61,6 +63,7 @@ export class NegociacaoService {
                         negociacoes.map(
                             objeto =>
                                 new Negociacao(
+                                    objeto.nome,
                                     new Date(objeto.data),
                                     objeto.quantidade,
                                     objeto.valor
@@ -87,7 +90,12 @@ export class NegociacaoService {
                         .reduce((dados, periodo) => dados.concat(periodo), [])
                         .map(
                             dado =>
-                                new Negociacao(new Date(dado.data), dado.quantidade, dado.valor)
+                                new Negociacao(
+                                    dado.nome, 
+                                    new Date(dado.data), 
+                                    dado.quantidade, 
+                                    dado.valor
+                                    )
                         );
 
                     resolve(negociacoes);

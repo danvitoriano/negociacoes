@@ -14,6 +14,7 @@ export class NegociacoesView extends View {
         <table class="table table-hover table-bordered">
             <thead>
                 <tr>
+                    <th>NOME</th>
                     <th>DATA</th>
                     <th>QUANTIDADE</th>
                     <th>VALOR</th>
@@ -25,6 +26,7 @@ export class NegociacoesView extends View {
                 ${model.negociacoes.map(n => `
                     
                     <tr>
+                        <td>${n.nome}</td>
                         <td>${DateHelper.dataParaTexto(n.data)}</td>
                         <td>${n.quantidade}</td>
                         <td>${n.valor}</td>
@@ -35,7 +37,7 @@ export class NegociacoesView extends View {
             </tbody>
                   
             <tfoot>
-                <td colspan="3"></td>
+                <td colspan="4"></td>
                 <td>
                     ${model.negociacoes.reduce((total, n) => total + n.volume, 0.0)}
                 </td>
