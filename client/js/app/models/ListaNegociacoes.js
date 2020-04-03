@@ -6,16 +6,9 @@ export class ListaNegociacoes {
     }
 
     adiciona(negociacao) {         
-        var validaCampos = this.validaCamposNegociacao(negociacao);
-        return validaCampos.trim() == "" ? this._negociacoes.push(negociacao) : validaCampos;
-
+        return this._negociacoes.push(negociacao);
     }
 
-    validaCamposNegociacao(props) {        
-        // valido o nome        
-        let  retorno = props.nome.trim() == "" ? "Nome" : "";        
-        return retorno;           
-    }
     esvazia() {
         this._negociacoes = [];
     }
