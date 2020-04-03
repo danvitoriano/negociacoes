@@ -9,6 +9,7 @@ import { Negociacao } from '../models/Negociacao';
 export class NegociacaoController {
     constructor() {
         let $ = document.querySelector.bind(document);
+        this._inputNome = $("#nome");
         this._inputData = $("#data");
         this._inputQuantidade = $("#quantidade");
         this._inputValor = $("#valor");
@@ -24,17 +25,27 @@ export class NegociacaoController {
 
     adiciona(event) {
         event.preventDefault();
+
+        if (this._campoNomePossuiApenasEspacoEmBranco()){
+            this._mensagem.texto = `O campo nome contem apenas espaços em branco, por favor insira um valor válido!`;
+            this._mensagemView.update(this._mensagem);       
+            return
+        }
+
         this._listaNegociacoes.adiciona(this._criaNegociacao());
         this._negociacoesView.update(this._listaNegociacoes);
-
-        this._mensagem.texto = "Negociação adicionada com sucesso";
+        this._mensagem.texto = "Negociação adicionada com sucesso!";
         this._mensagemView.update(this._mensagem);
+        this._limpaFormulario();                     
+    }
 
-        this._limpaFormulario();
+    _campoNomePossuiApenasEspacoEmBranco() {
+       return this._inputNome.value.trim() == "";
     }
 
     _criaNegociacao() {
         return new Negociacao(
+            this._inputNome.value,
             DateHelper.textoParaData(this._inputData.value),
             this._inputQuantidade.value,
             this._inputValor.value
@@ -42,10 +53,11 @@ export class NegociacaoController {
     }
 
     _limpaFormulario() {
+        this._inputNome.value = "";
         this._inputData.value = "";
         this._inputQuantidade.value = 1;
         this._inputValor.value = 0.0;
-        this._inputData.focus();
+        this._inputNome.focus();
     }
 
     apaga() {

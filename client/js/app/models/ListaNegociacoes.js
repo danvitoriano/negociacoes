@@ -5,9 +5,8 @@ export class ListaNegociacoes {
         this._negociacoes = [];
     }
 
-    adiciona(negociacao) {
-
-        this._negociacoes.push(negociacao);
+    adiciona(negociacao) {         
+        return this._negociacoes.push(negociacao);
     }
 
     esvazia() {

@@ -1,11 +1,17 @@
 export class Negociacao {
 
-    constructor(data, quantidade, valor) {
+    constructor(nome, data, quantidade, valor) {
 
+        this._nome = nome;
         this._data = new Date(data.getTime());
         this._quantidade = quantidade;
-        this._valor = valor;
+        this._valor = valor;        
         Object.freeze(this);
+    }
+
+    get nome(){
+        
+        return this._nome;
     }
 
     get volume() {
@@ -27,4 +33,5 @@ export class Negociacao {
 
         return this._valor;
     }
+   
 }
