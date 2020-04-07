@@ -6,6 +6,26 @@ export class NegociacaoService {
         this._http = new HttpService();
     }
 
+    criarNegociacao(negociacao) {
+        return new Promise((resolve, reject) => {
+            this._http
+                .post("http://localhost:3000/negociacoes", negociacao)
+                .then(negociacao => {
+                    resolve(
+                        new Negociacao(
+                            new Date(negociacao.data),
+                            negociacao.quantidade,
+                            negociacao.valor
+                        )
+                    );
+                })
+                .catch(erro => {
+                    console.error(erro)
+                    reject("Não foi possível inserir a negociação");
+                });
+        });
+    }
+
     obterNegociacoesDaSemana() {
         return new Promise((resolve, reject) => {
             this._http
