@@ -48,13 +48,15 @@ api.listaRetrasada = function(req, res) {
 };
 
 api.cadastraNegociacao = function(req, res) {
-
    console.log(req.body);
-   req.body.data = new Date(req.body.data.replace(/-/g,'/'));
-   negociacoes.push(req.body);
+   var body = req.body;
+
+    body._data = new Date(req.body._data);
+    var negociacao = { data : body._data, quantidade : body._quantidade, valor : body._valor}
+
+   negociacoes.push(negociacao);
    res.status(200).json("Negociação recebida");
 };
-
 
 
 module.exports = api;
