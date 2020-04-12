@@ -27,4 +27,8 @@ export class Negociacao {
 
         return this._valor;
     }
+
+    isEquals(objeto) {  
+        return JSON.stringify(this) == JSON.stringify(objeto)
+    }
 }
