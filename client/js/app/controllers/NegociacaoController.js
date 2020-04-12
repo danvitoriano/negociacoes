@@ -7,6 +7,7 @@ import { DateHelper } from '../helpers/DateHelper';
 import { Negociacao } from '../models/Negociacao';
 
 export class NegociacaoController {
+
     constructor() {
         let $ = document.querySelector.bind(document);
         this._inputData = $("#data");
@@ -20,6 +21,9 @@ export class NegociacaoController {
         this._mensagem = new Mensagem();
         this._mensagemView = new MensagemView($("#mensagemView"));
         this._mensagemView.update(this._mensagem);
+
+        this._ordemAtual = '';
+
     }
 
     adiciona(event) {
@@ -56,6 +60,17 @@ export class NegociacaoController {
         this._mensagemView.update(this._mensagem);
     }
 
+    ordena(coluna) {
+        if(this._ordemAtual == coluna) {
+            this._listaNegociacoes.inverteOrdem();
+            this._negociacoesView.update(this._listaNegociacoes);
+        } else {
+            this._listaNegociacoes.ordena((a, b) => a[coluna] - b[coluna]); 
+            this._negociacoesView.update(this._listaNegociacoes);
+        }
+        this._ordemAtual = coluna;        
+    }
+
     importaNegociacoes() {
         let service = new NegociacaoService();
         service
@@ -74,4 +89,13 @@ export class NegociacaoController {
                 return;
             });
     }
+}
+
+
+let negociacaoController = new NegociacaoController();
+
+export function currentInstance() {
+
+    return negociacaoController;
+
 }
