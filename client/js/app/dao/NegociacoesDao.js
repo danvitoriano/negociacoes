@@ -1,11 +1,68 @@
+import { connectionIndexDB } from "../ConnectionDB/index.js";
+import { Negociacao } from "../models/Negociacao.js";
+
 class NegociacaoDao {
   constructor(connection) {
-    // resolve a conexão com o banco
+    this._connnection = connection;
+    this._store = "negociacoes"; // dados do banco
   }
+
   adiciona(negociacao) {
     return new Promise((resolve, reject) => {
-      // resolve o request no banco em caso de
-      // sucesso ou erro
+      let transaction = this._connection.transaction(
+        [this._store],
+        "readwrite"
+      );
+
+      let store = transaction.objectStore("negociacoes");
+
+      let negociacao = new Negociacao(new Date(), 1, 200);
+
+      let request = store.add(negociacao);
+
+      request.onsuccess = (e) => {
+        resolve("adicionado com sucesso");
+      };
+
+      request.onerror = (e) => {
+        console.log(e.target.error);
+        reject("Não foi possível negociar a negociação");
+      };
     });
   }
+
+  listaTodos() {
+    let transaction = this._connection.transaction([this._store], "readwrite");
+    let store = transaction.objectStore("negociacoes");
+    let cursor = store.openCursor();
+    let negociacoes = [];
+    cursor.onsuccess = (e) => {
+      let atual = e.target.result;
+      if (atual) {
+        let dado = atual.value;
+        negociacoes.push(
+          new Negociacao(dado._data, dado._quantidade, dado._valor)
+        );
+        atual.continue();
+      } else {
+        console.log(negociacoes);
+      }
+    };
+    cursor.onerror = (e) => {
+      console.log(e.target.error.name);
+    };
+    debugger;
+  }
+}
+
+let dao = new NegociacaoDao(new conn().getConnection());
+let negociacao = new Negociacao(new Date(), 1, 100);
+dao.adiciona(negociacao).then(sucess, error);
+
+function sucess() {
+  console.log("sucess");
+}
+
+function error(e) {
+  console.log("erro", e);
 }
