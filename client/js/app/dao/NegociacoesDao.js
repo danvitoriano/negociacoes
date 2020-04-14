@@ -32,37 +32,50 @@ class NegociacaoDao {
   }
 
   listaTodos() {
-    let transaction = this._connection.transaction([this._store], "readwrite");
-    let store = transaction.objectStore("negociacoes");
-    let cursor = store.openCursor();
-    let negociacoes = [];
-    cursor.onsuccess = (e) => {
-      let atual = e.target.result;
-      if (atual) {
-        let dado = atual.value;
-        negociacoes.push(
-          new Negociacao(dado._data, dado._quantidade, dado._valor)
-        );
-        atual.continue();
-      } else {
-        console.log(negociacoes);
-      }
-    };
-    cursor.onerror = (e) => {
-      console.log(e.target.error.name);
-    };
-    debugger;
+    return new Promise((resolve, reject) => {
+      let transaction = this._connection.transaction(
+        [this._store],
+        "readwrite"
+      );
+      let store = transaction.objectStore("negociacoes");
+      let cursor = store.openCursor();
+      let negociacoes = [];
+      cursor.onsuccess = (e) => {
+        let atual = e.target.result;
+        if (atual) {
+          let dado = atual.value;
+          negociacoes.push(
+            new Negociacao(dado._data, dado._quantidade, dado._valor)
+          );
+          atual.continue();
+        } else {
+          console.log(negociacoes);
+        }
+      };
+      cursor.onerror = (e) => {
+        console.log(e.target.error.name);
+      };
+    });
   }
 }
 
-let dao = new NegociacaoDao(new conn().getConnection());
+// Connection create
+const connection = new connectionIndexDB().getConnection();
+
+// Instance of NefociacaoDao
+let dao = new NegociacaoDao(connection);
+
+// Examples add Negociação//
 let negociacao = new Negociacao(new Date(), 1, 100);
 dao.adiciona(negociacao).then(sucess, error);
+
+// Example list of Negociacao
+dao.listaTodos().then(sucess, error);
 
 function sucess() {
   console.log("sucess");
 }
 
 function error(e) {
-  console.log("erro", e);
+  throw new Error(e);
 }
