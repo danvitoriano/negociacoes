@@ -14,7 +14,7 @@ class NegociacaoDao {
         "readwrite"
       );
 
-      let store = transaction.objectStore("negociacoes");
+      let store = transaction.objectStore(this._store);
 
       let negociacao = new Negociacao(new Date(), 1, 200);
 
@@ -37,7 +37,7 @@ class NegociacaoDao {
         [this._store],
         "readwrite"
       );
-      let store = transaction.objectStore("negociacoes");
+      let store = transaction.objectStore(this._store);
       let cursor = store.openCursor();
       let negociacoes = [];
       cursor.onsuccess = (e) => {
