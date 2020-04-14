@@ -31,6 +31,14 @@ cd server
 npm i
 ```
 
+## MongoShell
+
+```
+https://downloads.mongodb.org/win32/mongodb-shell-win32-x86_64-2012plus-4.2.5.zip
+mongo "mongodb+srv://cluster0-ichd6.mongodb.net/test"  --username admin
+password: admin
+```
+
 ## Run Server
 
 ```
