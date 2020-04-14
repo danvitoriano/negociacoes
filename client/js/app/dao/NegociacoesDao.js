@@ -62,10 +62,10 @@ class NegociacaoDao {
 // Connection create
 const connection = new connectionIndexDB().getConnection();
 
-// Instance of NefociacaoDao
+// Instance of NegociacaoDao
 let dao = new NegociacaoDao(connection);
 
-// Examples add Negociação//
+// Examples add Negociacao
 let negociacao = new Negociacao(new Date(), 1, 100);
 dao.adiciona(negociacao).then(sucess, error);
 
