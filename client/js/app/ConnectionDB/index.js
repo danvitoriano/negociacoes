@@ -4,5 +4,4 @@ export class connectionIndexDB {
     return openRequest;
   }
 }
-
 export default connectionIndexDB;
