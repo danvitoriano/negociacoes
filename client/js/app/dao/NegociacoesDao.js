@@ -3,7 +3,7 @@ import { Negociacao } from "../models/Negociacao.js";
 
 class NegociacaoDao {
   constructor(connection) {
-    this._connnection = connection;
+    this._connection = connection;
     this._store = "negociacoes"; // dados do banco
   }
 
@@ -60,17 +60,36 @@ class NegociacaoDao {
 }
 
 // Connection create
-const connection = new connectionIndexDB().getConnection();
+const openRequest = new connectionIndexDB().getConnection();
 
-// Instance of NegociacaoDao
-let dao = new NegociacaoDao(connection);
+openRequest.onupgradeneeded = (e) => {
+  console.log("Cria ou altera um banco já existente");
+  let minhaConnection = e.target.result;
+  if (minhaConnection.objectStoreNames.contains("negociacoes")) {
+    minhaConnection.deleteObjectStore("negociacoes");
+  }
+  minhaConnection.createObjectStore("negociacoes", {
+    autoIncrement: true,
+  });
+};
+openRequest.onsuccess = (e) => {
+  console.log("Conexão obtida com sucesso");
 
-// Examples add Negociacao
-let negociacao = new Negociacao(new Date(), 1, 100);
-dao.adiciona(negociacao).then(sucess, error);
+  var connection = e.target.result;
 
-// Example list of Negociacao
-dao.listaTodos().then(sucess, error);
+  // Instance of NegociacaoDao
+  let dao = new NegociacaoDao(connection);
+
+  // Examples add Negociacao
+  let negociacao = new Negociacao(new Date(), 1, 100);
+  dao.adiciona(negociacao).then(sucess, error);
+
+  // Example list of Negociacao
+  dao.listaTodos().then(sucess, error);
+};
+openRequest.onerror = (e) => {
+  console.log(e.target.error);
+};
 
 function sucess() {
   console.log("sucess");
