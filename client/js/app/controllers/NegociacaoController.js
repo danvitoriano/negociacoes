@@ -24,10 +24,18 @@ export class NegociacaoController {
 
     adiciona(event) {
         event.preventDefault();
-        this._listaNegociacoes.adiciona(this._criaNegociacao());
-        this._negociacoesView.update(this._listaNegociacoes);
+        let negociacao = this._criaNegociacao();
+        let lstNegociacao = this._listaNegociacoes._negociacoes;
+        
+        if(!lstNegociacao.some(obj => obj.isEquals(negociacao)))
+        {
+            this._listaNegociacoes.adiciona(negociacao);
+            this._negociacoesView.update(this._listaNegociacoes);
 
-        this._mensagem.texto = "Negociação adicionada com sucesso";
+            this._mensagem.texto = "Negociação adicionada com sucesso";
+        } else {
+            this._mensagem.texto = "Já existe essa negociação na lista";
+        }
         this._mensagemView.update(this._mensagem);
 
         this._limpaFormulario();
@@ -57,14 +65,21 @@ export class NegociacaoController {
     }
 
     importaNegociacoes() {
-        let service = new NegociacaoService();
+        let service = new NegociacaoService();        
+        let lstNegociacao = this._listaNegociacoes._negociacoes;
+        this._mensagem.texto = "Negociações do período importadas";
         service
             .obterNegociacoes()
             .then(negociacoes =>
-                negociacoes.forEach(negociacao => {
-                    this._listaNegociacoes.adiciona(negociacao);
-                    this._mensagem.texto = "Negociações do período importadas";
-                    this._negociacoesView.update(this._listaNegociacoes);
+                negociacoes.forEach(negociacao => {        
+                    if(!lstNegociacao.some(obj => obj.isEquals(negociacao)))
+                    {
+                        this._listaNegociacoes.adiciona(negociacao);                        
+                        this._negociacoesView.update(this._listaNegociacoes);
+                        this._mensagemView.update(this._mensagem);
+                    } else {
+                        this._mensagem.texto = "Negociações do período importadas (menos duplicadas).";
+                    }
                     this._mensagemView.update(this._mensagem);
                 })
             )
