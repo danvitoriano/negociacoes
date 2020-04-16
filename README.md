@@ -76,3 +76,31 @@ npm run build
 ```
 npm run watch
 ```
+
+##Firebase
+
+The project is currently hosted on Firebase:
+
+Client: https://negociacoes-hosting.web.app/
+API: https://us-central1-negociacoes-hosting.cloudfunctions.net/api/
+
+###Running the project locally with Firebase
+
+First, install Firebase through npm with the following command:
+
+```
+npm i -g firebase-tools
+```
+
+It's always recommended to go to each application folder (in this case, /client first and then /server afterwards) and install the node modules required to run the project.
+
+After installing firebase tools, it's time to use the command line to serve our application. This is done on the root folder of the project. This way, Firebase will serve the client app as an hosting application and the server side APIs as a function application:
+
+```
+firebase serve --only hosting,functions
+```
+
+Now, it's possible to use the project locally in an environment served by Firebase:
+
+Client: http://localhost:5001
+API: http://localhost:5001/negociacoes-hosting/us-central1/api
