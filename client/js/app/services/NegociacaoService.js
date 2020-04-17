@@ -4,12 +4,17 @@ import { Negociacao } from '../models/Negociacao';
 export class NegociacaoService {
     constructor() {
         this._http = new HttpService();
+        this._apiDomain = "https://us-central1-negociacoes-hosting.cloudfunctions.net/api";
+
+        if(window.location.href.indexOf("localhost") > -1) {
+            this._apiDomain = "http://localhost:3000";
+        }
     }
 
     obterNegociacoesDaSemana() {
         return new Promise((resolve, reject) => {
             this._http
-                .get("http://localhost:3000/negociacoes/semana")
+                .get(this._apiDomain + "/negociacoes/semana")
                 .then(negociacoes => {
                     resolve(
                         negociacoes.map(
@@ -32,7 +37,7 @@ export class NegociacaoService {
     obterNegociacoesDaSemanaAnterior() {
         return new Promise((resolve, reject) => {
             this._http
-                .get("http://localhost:3000/negociacoes/anterior")
+                .get(this._apiDomain + "/negociacoes/anterior")
                 .then(negociacoes => {
                     resolve(
                         negociacoes.map(
@@ -55,7 +60,7 @@ export class NegociacaoService {
     obterNegociacoesDaSemanaRetrasada() {
         return new Promise((resolve, reject) => {
             this._http
-                .get("http://localhost:3000/negociacoes/retrasada")
+                .get(this._apiDomain + "/negociacoes/retrasada")
                 .then(negociacoes => {
                     resolve(
                         negociacoes.map(

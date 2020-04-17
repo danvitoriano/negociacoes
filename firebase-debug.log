@@ -1,0 +1,69 @@
+[debug] [2020-04-16T22:04:48.968Z] ----------------------------------------------------------------------
+[debug] [2020-04-16T22:04:48.972Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\lowvi\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve --only hosting,functions
+[debug] [2020-04-16T22:04:48.973Z] CLI Version:   8.0.2
+[debug] [2020-04-16T22:04:48.973Z] Platform:      win32
+[debug] [2020-04-16T22:04:48.973Z] Node Version:  v12.16.1
+[debug] [2020-04-16T22:04:48.975Z] Time:          Thu Apr 16 2020 19:04:48 GMT-0300 (GMT-03:00)
+[debug] [2020-04-16T22:04:48.976Z] ----------------------------------------------------------------------
+[debug] [2020-04-16T22:04:48.976Z] 
+[debug] [2020-04-16T22:04:49.025Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-04-16T22:04:49.026Z] > authorizing via signed-in user
+[debug] [2020-04-16T22:04:49.026Z] [iam] checking project negociacoes-hosting for permissions ["firebase.projects.get"]
+[debug] [2020-04-16T22:04:49.029Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2020-04-16T22:04:49.030Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2020-04-16T22:04:49.224Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 16 Apr 2020 22:04:50 GMT","server":"scaffolding on HTTPServer2","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"quic=\":443\"; ma=2592000; v=\"46,43\",h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-04-16T22:04:49.234Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/negociacoes-hosting:testIamPermissions  
+ {"permissions":["firebase.projects.get"]}
+[debug] [2020-04-16T22:04:50.271Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 16 Apr 2020 22:04:51 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=869","alt-svc":"quic=\":443\"; ma=2592000; v=\"46,43\",h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-04-16T22:04:50.272Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/negociacoes-hosting  
+ 
+[debug] [2020-04-16T22:04:50.887Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 16 Apr 2020 22:04:51 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"quic=\":443\"; ma=2592000; v=\"46,43\",h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-04-16T22:04:50.890Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/negociacoes-hosting/webApps/-/config  
+ 
+[debug] [2020-04-16T22:04:52.320Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 16 Apr 2020 22:04:53 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"quic=\":443\"; ma=2592000; v=\"46,43\",h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] i  hosting: Serving hosting files from: client
+[info] +  hosting: Local server: http://localhost:5000
+[warn] !  Your requested "node" version "8" doesn't match your global version "12"
+[info] +  functions: functions emulator started at http://localhost:5001
+[info] i  functions: Watching "C:\Users\lowvi\IdeaProjects\mba\modern-web\negociacoes-final\server" for Cloud Functions...
+[debug] [2020-04-16T22:04:52.944Z] [worker-pool] addWorker(~diagnostic~) 
+[debug] [2020-04-16T22:04:52.945Z] [worker-pool] Adding worker with key ~diagnostic~, total=1 
+[debug] [2020-04-16T22:04:52.946Z] [worker-pool] submitWork(triggerId=) 
+[debug] [2020-04-16T22:04:52.947Z] [worker-~diagnostic~-90e43ca6-5a29-451b-8402-e73448176dd1]: Assigning socketPath: \\?\pipe\C:\Users\lowvi\IdeaProjects\mba\modern-web\negociacoes-final\server\13412 
+[debug] [2020-04-16T22:04:52.948Z] [worker-~diagnostic~-90e43ca6-5a29-451b-8402-e73448176dd1]: BUSY 
+[debug] [2020-04-16T22:04:53.361Z] [runtime-status] [13412] Functions runtime initialized. {"cwd":"C:\\Users\\lowvi\\IdeaProjects\\mba\\modern-web\\negociacoes-final\\server","node_version":"12.16.1"} 
+[debug] [2020-04-16T22:04:53.362Z] [runtime-status] [13412] Disabled runtime features: undefined 
+[debug] [2020-04-16T22:04:53.366Z] [runtime-status] [13412] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.10.0","resolution":"C:\\Users\\lowvi\\IdeaProjects\\mba\\modern-web\\negociacoes-final\\server\\node_modules\\firebase-admin\\lib\\index.js"} 
+[debug] [2020-04-16T22:04:53.369Z] [runtime-status] [13412] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"C:\\Users\\lowvi\\IdeaProjects\\mba\\modern-web\\negociacoes-final\\server\\node_modules\\firebase-functions\\lib\\index.js"} 
+[debug] [2020-04-16T22:04:53.371Z] [runtime-status] [13412] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] 
+[debug] [2020-04-16T22:04:53.915Z] [runtime-status] [13412] Checked functions.config() {"config":{}} 
+[debug] [2020-04-16T22:04:53.916Z] [runtime-status] [13412] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"C:\\Users\\lowvi\\IdeaProjects\\mba\\modern-web\\negociacoes-final\\server\\node_modules\\firebase-functions\\lib\\index.js"} 
+[debug] [2020-04-16T22:04:53.919Z] [runtime-status] [13412] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.10.0","resolution":"C:\\Users\\lowvi\\IdeaProjects\\mba\\modern-web\\negociacoes-final\\server\\node_modules\\firebase-admin\\lib\\index.js"} 
+[debug] [2020-04-16T22:04:53.920Z] [runtime-status] [13412] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"C:\\Users\\lowvi\\IdeaProjects\\mba\\modern-web\\negociacoes-final\\server\\node_modules\\firebase-functions\\lib\\index.js"} 
+[debug] [2020-04-16T22:04:53.921Z] [runtime-status] [13412] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"8.10.0","resolution":"C:\\Users\\lowvi\\IdeaProjects\\mba\\modern-web\\negociacoes-final\\server\\node_modules\\firebase-admin\\lib\\index.js"}} 
+[info] >  C:\Users\lowvi\IdeaProjects\mba\modern-web\negociacoes-final\client {"user":"C:\\Users\\lowvi\\IdeaProjects\\mba\\modern-web\\negociacoes-final\\client"}
+[info] +  functions[api]: http function initialized (http://localhost:5001/negociacoes-hosting/us-central1/api).
+[debug] [2020-04-16T22:04:54.993Z] [worker-~diagnostic~-90e43ca6-5a29-451b-8402-e73448176dd1]: IDLE 
+[debug] [2020-04-16T22:33:20.746Z] File C:\Users\lowvi\IdeaProjects\mba\modern-web\negociacoes-final\server\server.js changed, reloading triggers 
+[debug] [2020-04-16T22:33:21.749Z] [worker-pool] Shutting down IDLE worker (~diagnostic~) 
+[debug] [2020-04-16T22:33:21.749Z] [worker-~diagnostic~-90e43ca6-5a29-451b-8402-e73448176dd1]: FINISHING 
+[debug] [2020-04-16T22:33:21.762Z] [worker-pool] addWorker(~diagnostic~) 
+[debug] [2020-04-16T22:33:21.763Z] [worker-pool] Adding worker with key ~diagnostic~, total=2 
+[debug] [2020-04-16T22:33:21.763Z] [worker-pool] submitWork(triggerId=) 
+[debug] [2020-04-16T22:33:21.763Z] [worker-~diagnostic~-2fa39b55-f135-49aa-9e38-4f53d4a570a4]: Assigning socketPath: \\?\pipe\C:\Users\lowvi\IdeaProjects\mba\modern-web\negociacoes-final\server\10268 
+[debug] [2020-04-16T22:33:21.763Z] [worker-~diagnostic~-2fa39b55-f135-49aa-9e38-4f53d4a570a4]: BUSY 
+[debug] [2020-04-16T22:33:21.765Z] [worker-~diagnostic~-90e43ca6-5a29-451b-8402-e73448176dd1]: exited 
+[debug] [2020-04-16T22:33:21.765Z] [worker-~diagnostic~-90e43ca6-5a29-451b-8402-e73448176dd1]: FINISHED 
+[debug] [2020-04-16T22:33:22.247Z] [runtime-status] [10268] Functions runtime initialized. {"cwd":"C:\\Users\\lowvi\\IdeaProjects\\mba\\modern-web\\negociacoes-final\\server","node_version":"12.16.1"} 
+[debug] [2020-04-16T22:33:22.249Z] [runtime-status] [10268] Disabled runtime features: undefined 
+[debug] [2020-04-16T22:33:22.255Z] [runtime-status] [10268] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.10.0","resolution":"C:\\Users\\lowvi\\IdeaProjects\\mba\\modern-web\\negociacoes-final\\server\\node_modules\\firebase-admin\\lib\\index.js"} 
+[debug] [2020-04-16T22:33:22.256Z] [runtime-status] [10268] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"C:\\Users\\lowvi\\IdeaProjects\\mba\\modern-web\\negociacoes-final\\server\\node_modules\\firebase-functions\\lib\\index.js"} 
+[debug] [2020-04-16T22:33:22.258Z] [runtime-status] [10268] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] 
+[debug] [2020-04-16T22:33:22.306Z] [runtime-status] [10268] Checked functions.config() {"config":{}} 
+[debug] [2020-04-16T22:33:22.306Z] [runtime-status] [10268] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"C:\\Users\\lowvi\\IdeaProjects\\mba\\modern-web\\negociacoes-final\\server\\node_modules\\firebase-functions\\lib\\index.js"} 
+[debug] [2020-04-16T22:33:22.307Z] [runtime-status] [10268] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.10.0","resolution":"C:\\Users\\lowvi\\IdeaProjects\\mba\\modern-web\\negociacoes-final\\server\\node_modules\\firebase-admin\\lib\\index.js"} 
+[debug] [2020-04-16T22:33:22.308Z] [runtime-status] [10268] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.6.0","resolution":"C:\\Users\\lowvi\\IdeaProjects\\mba\\modern-web\\negociacoes-final\\server\\node_modules\\firebase-functions\\lib\\index.js"} 
+[debug] [2020-04-16T22:33:22.308Z] [runtime-status] [10268] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"8.10.0","resolution":"C:\\Users\\lowvi\\IdeaProjects\\mba\\modern-web\\negociacoes-final\\server\\node_modules\\firebase-admin\\lib\\index.js"}} 
+[info] >  C:\Users\lowvi\IdeaProjects\mba\modern-web\negociacoes-final\client {"user":"C:\\Users\\lowvi\\IdeaProjects\\mba\\modern-web\\negociacoes-final\\client"}
+[debug] [2020-04-16T22:33:22.418Z] [worker-~diagnostic~-2fa39b55-f135-49aa-9e38-4f53d4a570a4]: IDLE 
