@@ -19,7 +19,7 @@ export class ListaNegociacoes {
         return [].concat(this._negociacoes);
     }
     
-    getVolumeTotal(negociacoes){
-        `${negociacoes.reduce((total, n) => total + n.volume, 0.0)}`;
-    }
+    get volumeTotal() {
+    return this._negociacoes.reduce((total, n) => total + n.volume, 0.0);
+}
 }
