@@ -37,7 +37,7 @@ export class NegociacoesView extends View {
             <tfoot>
                 <td colspan="3"></td>
                 <td>
-                    ${ListaNegociacoes.getVolumeTotal(model.negociacoes)}
+                    ${model.volumeTotal}
                 </td>
             </tfoot>
             
