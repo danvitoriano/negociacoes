@@ -7,6 +7,9 @@ dataAnterior.setDate(dataAtual.getDate() - 7);
 var dateRetrasada = new Date();
 dateRetrasada.setDate(dataAtual.getDate() - 14);
 
+var database  = require('../database');
+database.connect();
+
 var negociacoes = [
       { data : dataAtual, quantidade : 1, valor : 150},
       { data : dataAtual, quantidade : 2, valor : 250},
@@ -20,7 +23,7 @@ var negociacoes = [
     ];
 
 
-api.listaSemana = function(req, res) {
+api.listaSemana = function(req, res) {   
     var negociacoesAtuais = negociacoes.filter(function(negociacao) {
         return negociacao.data > dataAnterior;
     });

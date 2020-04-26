@@ -1,5 +1,4 @@
 var http = require('http')
-    ,db  = require('./config/database')
     ,app = require('./config/express');
  
 
