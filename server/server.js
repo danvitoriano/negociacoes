@@ -3,7 +3,7 @@ var http = require('http')
     ,mongodb = require("mongodb")
     ,db = null;
 
-mongodb.MongoClient.connect("mongodb+srv://admin:admin@cluster0-ichd6.mongodb.net/test?retryWrites=true&w=majority", function (err, client) {
+mongodb.MongoClient.connect("mongodb+srv://fiap:fiap@cluster0-ichd6.mongodb.net/negociacoes?retryWrites=true&w=majority", function (err, client) {
     if (err) {
         console.log(err);
         process.exit(1);
