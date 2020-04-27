@@ -10,12 +10,12 @@ dateRetrasada.setDate(dataAtual.getDate() - 14);
 var database  = require('../database');
 
 var negociacoes = [
-      { data : dataAtual, quantidade : 1, valor : 150},
-      { data : dataAtual, quantidade : 2, valor : 250},
-      { data : dataAtual, quantidade : 3, valor : 350},
-      { data : dataAnterior, quantidade : 1, valor : 450},
-      { data : dataAnterior, quantidade : 2, valor : 550},
-      { data : dataAnterior, quantidade : 3, valor : 650},
+      { data : dataAtual,     quantidade : 1, valor : 150},
+      { data : dataAtual,     quantidade : 2, valor : 250},
+      { data : dataAtual,     quantidade : 3, valor : 350},
+      { data : dataAnterior,  quantidade : 1, valor : 450},
+      { data : dataAnterior,  quantidade : 2, valor : 550},
+      { data : dataAnterior,  quantidade : 3, valor : 650},
       { data : dateRetrasada, quantidade : 1, valor : 750},
       { data : dateRetrasada, quantidade : 2, valor : 950},
       { data : dateRetrasada, quantidade : 3, valor : 950}
@@ -27,16 +27,16 @@ api.listaSemana = function(req, res) {
     //    return negociacao.data > dataAnterior;
     //});
     var negociacoesAtuais = database.find('negociacoes', {});
-    console.log('3 ' + negociacoesAtuais);
-    console.log('4 ' + res.json(negociacoesAtuais));
     res.json(negociacoesAtuais);
 };
 
 api.listaAnterior = function(req, res) {
    
-   var negociacoesAnteriores = negociacoes.filter(function(negociacao) {
-        return negociacao.data < dataAtual && negociacao.data > dateRetrasada;
-    });
+   //var negociacoesAnteriores = negociacoes.filter(function(negociacao) {
+   //     return negociacao.data < dataAtual && negociacao.data > dateRetrasada;
+   // });
+
+    var negociacoesAtuais = database.find('negociacoes', {});
 	setTimeout(function() {
 		res.json(negociacoesAnteriores);	
 	}, 500);
@@ -45,9 +45,10 @@ api.listaAnterior = function(req, res) {
 
 api.listaRetrasada = function(req, res) {
 
-   var negociacoesRtrasadas = negociacoes.filter(function(negociacao) {
-        return negociacao.data < dataAnterior;
-    });
+    //var negociacoesRtrasadas = negociacoes.filter(function(negociacao) {
+    //    return negociacao.data < dataAnterior;
+    //});
+    var negociacoesAtuais = database.find('negociacoes', {});
     res.json(negociacoesRtrasadas);
     
 };
@@ -56,7 +57,9 @@ api.cadastraNegociacao = function(req, res) {
 
    console.log(req.body);
    req.body.data = new Date(req.body.data.replace(/-/g,'/'));
-   negociacoes.push(req.body);
+   //negociacoes.push(req.body);
+   var negociacao = req.body;
+   var ret = database.insert(negociacao);
    res.status(200).json("Negociação recebida");
 };
 
