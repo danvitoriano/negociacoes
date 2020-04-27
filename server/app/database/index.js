@@ -14,7 +14,7 @@ database.find = function(colName, negociacao){
         }
         var con = client.db();
              
-        database.result = con.collection(colName).count(negociacao);
+        database.result = con.collection(colName).find(negociacao);
         console.log('api do mongo ' + database.result);
         client.close();
     });
@@ -67,6 +67,6 @@ database.remove = function(colName, negociacao){
     });
 }
 
-database.result = {'banana': 'banana'};
+database.result = {};
 
 module.exports = database;
