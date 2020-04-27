@@ -5,7 +5,6 @@ var url =  "mongodb+srv://fiap:fiap@cluster0-ichd6.mongodb.net/negociacoes?retry
 var client = mongodb.MongoClient;
 
 database.find = function(colName, negociacao){
-    var result = {};
 
     client.connect(url, function (err, client) {
     
@@ -15,16 +14,14 @@ database.find = function(colName, negociacao){
         }
         var con = client.db();
              
-        result = con.collection(colName).find(negociacao);
+        database.result = con.collection(colName).count(negociacao);
+        console.log('api do mongo ' + database.result);
         client.close();
     });
-
-    return result;
 }
 
 database.insert = function(colName, negociacao){
-    var result = {};
-
+    
     client.connect(url, function (err, client) {
     
         if (err) {
@@ -33,15 +30,12 @@ database.insert = function(colName, negociacao){
         }
         var con = client.db();
              
-        result = con.collection(colName).insert(negociacao);
+        database.result = con.collection(colName).insert(negociacao);
         client.close();
     });
-
-    return result;
 }
 
 database.update = function(colName, negociacaoOld, negociacaoNew){
-    var result = {};
 
     client.connect(url, function (err, client) {
     
@@ -51,30 +45,28 @@ database.update = function(colName, negociacaoOld, negociacaoNew){
         }
         var con = client.db();
              
-        result = con.collection(colName).update(negociacaoOld, negociacaoNew)
+        database.result = con.collection(colName).update(negociacaoOld, negociacaoNew)
         client.close();
     });
-
-    return result;
 }
 
 
-database.update = function(colName, negociacao){
-    var result = {};
-
+database.remove = function(colName, negociacao){
+    
     client.connect(url, function (err, client) {
     
         if (err) {
             console.log(err);
             process.exit(1);
         }
+
         var con = client.db();
              
-        result = con.collection(colName).remove(negociacao)
+        database.result = con.collection(colName).remove(negociacao)
         client.close();
     });
-
-    return result;
 }
+
+database.result = {'banana': 'banana'};
 
 module.exports = database;

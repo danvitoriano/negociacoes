@@ -26,7 +26,9 @@ api.listaSemana = function(req, res) {
     //var negociacoesAtuais = negociacoes.filter(function(negociacao) {
     //    return negociacao.data > dataAnterior;
     //});
-    var negociacoesAtuais = database.find('negociacoes', {});
+    database.find('negociacoes', {data : {'$gt': dataAnterior}});
+    var negociacoesAtuais = database.result;
+    console.log('api de negociacao ' + database.result);
     res.json(negociacoesAtuais);
 };
 
@@ -36,8 +38,10 @@ api.listaAnterior = function(req, res) {
    //     return negociacao.data < dataAtual && negociacao.data > dateRetrasada;
    // });
 
-    var negociacoesAtuais = database.find('negociacoes', {});
-	setTimeout(function() {
+    database.find('negociacoes', {data : {'$lt': dataAtual}, data: {'$gt': dateRetrasada}});
+    var negociacoesAnteriores = database.result;
+    console.log('api de negociacao ' + database.result);
+    setTimeout(function() {
 		res.json(negociacoesAnteriores);	
 	}, 500);
     
@@ -48,7 +52,9 @@ api.listaRetrasada = function(req, res) {
     //var negociacoesRtrasadas = negociacoes.filter(function(negociacao) {
     //    return negociacao.data < dataAnterior;
     //});
-    var negociacoesAtuais = database.find('negociacoes', {});
+    database.find('negociacoes', {data : {'$lt': dataAnterior}});
+    var negociacoesRtrasada = database.result;
+    console.log(database.result);
     res.json(negociacoesRtrasadas);
     
 };
@@ -59,10 +65,9 @@ api.cadastraNegociacao = function(req, res) {
    req.body.data = new Date(req.body.data.replace(/-/g,'/'));
    //negociacoes.push(req.body);
    var negociacao = req.body;
-   var ret = database.insert(negociacao);
+   database.insert(negociacao);
+   console.log(database.result);
    res.status(200).json("Negociação recebida");
 };
-
-
 
 module.exports = api;
