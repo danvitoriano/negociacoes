@@ -14,9 +14,15 @@ database.find = function(colName, negociacao){
         }
         var con = client.db();
              
-        database.result = con.collection(colName).find(negociacao);
-        console.log('api do mongo ' + database.result);
-        client.close();
+        con.collection(colName).find().toArray(function(err, result){
+            if (err) {
+                console.log(err);
+                process.exit(1);
+            }
+                
+            console.log('api do mongo ' + result);
+            client.close();
+        });   
     });
 }
 
@@ -30,9 +36,15 @@ database.insert = function(colName, negociacao){
         }
         var con = client.db();
              
-        database.result = con.collection(colName).insert(negociacao);
-        client.close();
-    });
+        con.collection(colName).insertOne(negociacao, function(err, result){
+            if (err) {
+                console.log(err);
+                process.exit(1);
+            }
+            console.log('api do mongo ' + result);
+            client.close();
+        });
+   });
 }
 
 database.update = function(colName, negociacaoOld, negociacaoNew){
@@ -45,9 +57,15 @@ database.update = function(colName, negociacaoOld, negociacaoNew){
         }
         var con = client.db();
              
-        database.result = con.collection(colName).update(negociacaoOld, negociacaoNew)
-        client.close();
-    });
+        con.collection(colName).updateOne(negociacaoOld, negociacaoNew, function(err, result){
+            if (err) {
+                console.log(err);
+                process.exit(1);
+            }
+            console.log('api do mongo ' + result);
+            client.close();
+        });
+     });
 }
 
 
@@ -62,8 +80,14 @@ database.remove = function(colName, negociacao){
 
         var con = client.db();
              
-        database.result = con.collection(colName).remove(negociacao)
-        client.close();
+        con.collection(colName).deleteOne(negociacao, function(err, result){
+            if (err) {
+                console.log(err);
+                process.exit(1);
+            }
+            console.log('api do mongo ' + result);
+            client.close();
+        });
     });
 }
 
