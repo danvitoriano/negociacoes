@@ -1,0 +1,95 @@
+{
+	"info": {
+		"_postman_id": "cd225ef2-fc1d-41ff-86ea-85238debff65",
+		"name": "negociacoes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "listaSemana",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/negociacoes/semana",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"negociacoes",
+						"semana"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cadastraNegociacao",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"data\": \"2020-04-26\",\r\n  \"quantidade\": 9,\r\n  \"valor\": 999\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/negociacoes",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"negociacoes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listaAnterior",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/negociacoes/anterior",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"negociacoes",
+						"anterior"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listaRetrasada",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/negociacoes/retrasada",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"negociacoes",
+						"retrasada"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

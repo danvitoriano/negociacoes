@@ -54,7 +54,7 @@ api.listaRetrasada = function(req, res) {
     //    return negociacao.data < dataAnterior;
     //});
     database.find('negociacoes', {data : {'$lt': dataAnterior}}, function(result){
-        res.json(negociacoesRetrasadas);
+        res.json(result);
     });  
 };
 
@@ -65,8 +65,18 @@ api.cadastraNegociacao = function(req, res) {
    //negociacoes.push(req.body);
    var negociacao = req.body;
    database.insert('negociacoes', negociacao, function(result){
-    res.json(result);
-    //res.status(200).json("Negociação recebida");    
+    
+      if(result.result.ok == 1){
+        var resp = {
+                     msg         : 'Negociação recebida',
+                     count       : result.insertedCount,
+                     negociacoes : result.ops
+                   };
+
+        res.status(200).json(resp); 
+      }else{
+        res.status(500).json("Internal server error");
+      }
    });
 };
 

@@ -14,7 +14,7 @@ database.find = function(colName, negociacao, callback){
         }
         var con = client.db();
              
-        con.collection(colName).find().toArray(function(err, result){
+        con.collection(colName).find(negociacao).toArray(function(err, result){
             if (err) {
                 console.log(err);
                 process.exit(1);
