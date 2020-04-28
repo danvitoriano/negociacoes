@@ -4,7 +4,7 @@ var mongodb = require("mongodb");
 var url =  "mongodb+srv://fiap:fiap@cluster0-ichd6.mongodb.net/negociacoes?retryWrites=true&w=majority";
 var client = mongodb.MongoClient;
 
-database.find = function(colName, negociacao){
+database.find = function(colName, negociacao, callback){
 
     client.connect(url, function (err, client) {
     
@@ -19,14 +19,13 @@ database.find = function(colName, negociacao){
                 console.log(err);
                 process.exit(1);
             }
-                
-            console.log('api do mongo ' + result);
+            callback(result);
             client.close();
         });   
     });
 }
 
-database.insert = function(colName, negociacao){
+database.insert = function(colName, negociacao, callback){
     
     client.connect(url, function (err, client) {
     
@@ -41,13 +40,13 @@ database.insert = function(colName, negociacao){
                 console.log(err);
                 process.exit(1);
             }
-            console.log('api do mongo ' + result);
+            callback(result);
             client.close();
         });
    });
 }
 
-database.update = function(colName, negociacaoOld, negociacaoNew){
+database.update = function(colName, negociacaoOld, negociacaoNew, callback){
 
     client.connect(url, function (err, client) {
     
@@ -62,14 +61,14 @@ database.update = function(colName, negociacaoOld, negociacaoNew){
                 console.log(err);
                 process.exit(1);
             }
-            console.log('api do mongo ' + result);
+            callback(result);
             client.close();
         });
      });
 }
 
 
-database.remove = function(colName, negociacao){
+database.remove = function(colName, negociacao, callback){
     
     client.connect(url, function (err, client) {
     
@@ -85,12 +84,10 @@ database.remove = function(colName, negociacao){
                 console.log(err);
                 process.exit(1);
             }
-            console.log('api do mongo ' + result);
+            callback(result);
             client.close();
         });
     });
 }
-
-database.result = {};
 
 module.exports = database;
