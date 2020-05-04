@@ -1,3 +1,5 @@
+import indexDbConfig  from "./IndexDbConfig"
+
 export class ListaNegociacoes {
 
     constructor() {
@@ -8,9 +10,12 @@ export class ListaNegociacoes {
     adiciona(negociacao) {
 
         this._negociacoes.push(negociacao);
+
+        indexDbConfig.gravar(negociacao);
     }
 
     esvazia() {
+        indexDbConfig.deletaTabela();
         this._negociacoes = [];
     }
 
