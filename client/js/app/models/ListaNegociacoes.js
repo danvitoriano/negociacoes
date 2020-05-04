@@ -1,4 +1,4 @@
-export class ListaNegociacoes {
+class ListaNegociacoes {
 
     constructor() {
 
@@ -8,6 +8,8 @@ export class ListaNegociacoes {
     adiciona(negociacao) {
 
         this._negociacoes.push(negociacao);
+
+        gravar(negociacao);
     }
 
     esvazia() {
@@ -19,3 +21,4 @@ export class ListaNegociacoes {
         return [].concat(this._negociacoes);
     }
 }
+module.exports = new ListaNegociacoes()
