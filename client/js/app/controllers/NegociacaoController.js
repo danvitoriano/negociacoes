@@ -3,6 +3,7 @@ import { Mensagem } from '../models/Mensagem';
 import { NegociacoesView } from '../views/NegociacoesView';
 import { MensagemView } from '../views/MensagemView';
 import { NegociacaoService } from '../services/NegociacaoService';
+import { NegociacoesIndexedDBService } from '../services/NegociacoesIndexedDBService';
 import { DateHelper } from '../helpers/DateHelper';
 import { Negociacao } from '../models/Negociacao';
 
@@ -20,11 +21,18 @@ export class NegociacaoController {
         this._mensagem = new Mensagem();
         this._mensagemView = new MensagemView($("#mensagemView"));
         this._mensagemView.update(this._mensagem);
+
+        this._negociacoesIndexedDBService = new NegociacoesIndexedDBService();
     }
 
     adiciona(event) {
         event.preventDefault();
-        this._listaNegociacoes.adiciona(this._criaNegociacao());
+
+        let negociacao = this._criaNegociacao();
+
+        this._listaNegociacoes.adiciona(negociacao);
+        this._negociacoesIndexedDBService.adiciona(negociacao);
+
         this._negociacoesView.update(this._listaNegociacoes);
 
         this._mensagem.texto = "Negociação adicionada com sucesso";
