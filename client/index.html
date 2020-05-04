@@ -1,176 +1,54 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Negociações</title>
-    <link rel="stylesheet" href="css/bootstrap.css" />
-    <link rel="stylesheet" href="css/bootstrap-theme.css" />
 
-    <!-- data-main attribute tells require.js to load
+<head>
+  <meta charset="UTF-8" />
+  <title>Negociações</title>
+  <link rel="stylesheet" href="css/bootstrap.css" />
+  <link rel="stylesheet" href="css/bootstrap-theme.css" />
+
+  <!-- data-main attribute tells require.js to load
              scripts/main.js after require.js loads. -->
-    <!-- <script data-main="scripts/main" src="js/app/require.js"></script> -->
-  </head>
-  <body class="container">
-    <h1 class="text-center">Negociações</h1>
+  <!-- <script data-main="scripts/main" src="js/app/require.js"></script> -->
+</head>
 
-    <div id="mensagemView"></div>
+<body class="container">
+  <h1 class="text-center">Negociações</h1>
 
-    <form class="form">
-      <div class="form-group">
-        <label for="data">Data</label>
-        <input type="date" id="data" class="form-control" required autofocus />
-      </div>
+  <div id="mensagemView"></div>
 
-      <div class="form-group">
-        <label for="quantidade">Quantidade</label>
-        <input
-          type="number"
-          min="1"
-          step="1"
-          id="quantidade"
-          class="form-control"
-          value="1"
-          required
-        />
-      </div>
-
-      <div class="form-group">
-        <label for="valor">Valor</label>
-        <input
-          id="valor"
-          type="number"
-          class="form-control"
-          min="0.01"
-          step="0.01"
-          value="0.0"
-          required
-        />
-      </div>
-
-      <button class="btn btn-primary" type="submit">Incluir</button>
-    </form>
-
-    <div class="text-center">
-      <button
-        id="importa-negociacoes-btn"
-        class="btn btn-primary text-center"
-        type="button"
-        onclick="negociacaoController.importaNegociacoes()"
-      >
-        Importar Negociações
-      </button>
-      <button
-        id="apaga-negociacoes-btn"
-        class="btn btn-primary text-center"
-        type="button"
-        onclick="negociacaoController.apaga()"
-      >
-        Apagar
-      </button>
+  <form class="form">
+    <div class="form-group">
+      <label for="data">Data</label>
+      <input type="date" id="data" class="form-control" required autofocus />
     </div>
-    <br />
-    <br />
 
-    <div id="negociacoesView"></div>
-    <script src="js/app/models/Negociacao.js"></script>
-        <script src="js/app/models/ListaNegociacoes.js"></script>
-        <script src="js/app/models/Mensagem.js"></script>       
-        <script src="js/app/controllers/NegociacaoController.js"></script>
-        <script src="js/app/helpers/DateHelper.js"></script>
-        <script src="js/app/views/View.js"></script> 
-        <script src="js/app/views/NegociacoesView.js"></script>
-        <script src="js/app/services/NegociacaoService.js"></script>
-        <script src="js/app/services/HttpService.js"></script>
-        <script src="js/app/views/MensagemView.js"></script> 
-        <script> 
-            let negociacaoController = new NegociacaoController();
-        </script>   
-           
-        <script>
-          var connection;
-    
-          var openRequest = window.indexedDB.open("aluraframe", 4);
-    
-          openRequest.onupgradeneeded = e => {
-            console.log("Cria ou altera um banco já existente");
-    
-            let minhaConnection = e.target.result;
-    
-            if (minhaConnection.objectStoreNames.contains("negociacoes")) {
-              minhaConnection.deleteObjectStore("negociacoes");
-            }
-    
-            minhaConnection.createObjectStore("negociacoes", {
-              autoIncrement: true
-            });
-          };
-    
-          openRequest.onsuccess = e => {
-            console.log("Conexão obtida com sucesso");
-    
-            connection = e.target.result;
-          };
-    
-          openRequest.onerror = e => {
-            console.log(e.target.error);
-          };
-          function gravar(negociacao) {
-            let transaction = connection.transaction(["negociacoes"], "readwrite");
-    
-            let store = transaction.objectStore("negociacoes");
-    
-       
-    
-            let request = store.add(negociacao);
-    
-            request.onsuccess = e => {
-              console.log("Negociação incluida com sucesso");
-            };
-    
-            request.onerror = e => {
-              console.log("Não foi possível incluir a negociação");
-            };
-          }
-          function deletaTabela(){
-            console.log("entrou no deletaTabela");
-            let transaction = connection.transaction(["negociacoes"], "readwrite");
-            let objectStore = transaction.objectStore("negociacoes");
-            let objectStoreRequest = objectStore.clear();
-            objectStoreRequest.onerror = e =>  {
-              console.log("erro na deleção da tabela");
-            };
-            console.log("saiu do deletaTabela");
-          }
-    
-          function listaTodos() {
-            let transaction = connection.transaction(["negociacoes"], "readwrite");
-    
-            let store = transaction.objectStore("negociacoes");
-    
-            let cursor = store.openCursor();
-    
-            let negociacoes = [];
-    
-            cursor.onsuccess = e => {
-              let atual = e.target.result;
-    
-              if (atual) {
-                let dado = atual.value;
-    
-                negociacoes.push(
-                  new Negociacao(dado._data, dado._quantidade, dado._valor)
-                );
-    
-                atual.continue();
-              } else {
-                console.log(negociacoes);
-              }
-            };
-    
-            cursor.onerror = e => {
-              console.log(e.target.error.name);
-            };
-          }
-        </script>
-  </body>
+    <div class="form-group">
+      <label for="quantidade">Quantidade</label>
+      <input type="number" min="1" step="1" id="quantidade" class="form-control" value="1" required />
+    </div>
+
+    <div class="form-group">
+      <label for="valor">Valor</label>
+      <input id="valor" type="number" class="form-control" min="0.01" step="0.01" value="0.0" required />
+    </div>
+
+    <button class="btn btn-primary" type="submit">Incluir</button>
+  </form>
+
+  <div class="text-center">
+    <button id="importa-negociacoes-btn" class="btn btn-primary text-center" type="button">
+      Importar Negociações
+    </button>
+    <button id="apaga-negociacoes-btn" class="btn btn-primary text-center" type="button">
+      Apagar
+    </button>
+  </div>
+  <br />
+  <br />
+
+  <div id="negociacoesView"></div>
+  <script src="./build/_boot.bundle.js"></script>
+</body>
+
 </html>

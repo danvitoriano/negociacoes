@@ -1,4 +1,6 @@
-class ListaNegociacoes {
+import indexDbConfig  from "./IndexDbConfig"
+
+export class ListaNegociacoes {
 
     constructor() {
 
@@ -9,7 +11,7 @@ class ListaNegociacoes {
 
         this._negociacoes.push(negociacao);
 
-        gravar(negociacao);
+        indexDbConfig.gravar(negociacao);
     }
 
     esvazia() {
@@ -21,4 +23,3 @@ class ListaNegociacoes {
         return [].concat(this._negociacoes);
     }
 }
-module.exports = new ListaNegociacoes()
