@@ -15,6 +15,7 @@ export class ListaNegociacoes {
     }
 
     esvazia() {
+        indexDbConfig.deletaTabela();
         this._negociacoes = [];
     }
 
