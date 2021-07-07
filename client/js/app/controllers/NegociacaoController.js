@@ -12,6 +12,7 @@ export class NegociacaoController {
         this._inputData = $("#data");
         this._inputQuantidade = $("#quantidade");
         this._inputValor = $("#valor");
+        
         this._listaNegociacoes = new ListaNegociacoes();
 
         this._negociacoesView = new NegociacoesView($("#negociacoesView"));
@@ -73,5 +74,9 @@ export class NegociacaoController {
                 this._mensagemView.update(this._mensagem);
                 return;
             });
+    }
+
+    filtrar(dataRecebida){
+        this._listaNegociacoes.filtraData(dataRecebida);
     }
 }
